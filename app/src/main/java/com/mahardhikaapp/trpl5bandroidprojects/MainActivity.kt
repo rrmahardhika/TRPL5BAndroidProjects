@@ -1,62 +1,63 @@
 package com.mahardhikaapp.trpl5bandroidprojects
 
-
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.mahardhikaapp.trpl5bandroidprojects.ui.theme.TRPL5BAndroidProjectsTheme
-import com.mahardhikaapp.trpl5bandroidprojects.screens.*
+import com.mahardhikaapp.trpl5bandroidprojects.screens.Home
+import com.mahardhikaapp.trpl5bandroidprojects.screens.Profile
+import com.mahardhikaapp.trpl5bandroidprojects.screens.Setting
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TRPL5BAndroidProjectsTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    ScreenMain()
-                }
+            Surface(color = MaterialTheme.colorScheme.background) {
+                ScreenMain()
             }
         }
     }
 }
 
+
 @Composable
 fun ScreenMain() {
+
     val navController = rememberNavController()
+
+    /**
+     * NavHost Builds a navGraph to handle navigation, set the start destination to Home and
+     * provide the navController which will control the navigation.
+     */
     NavHost(navController = navController, startDestination = Routes.Home.route) {
+
+        //First route : Home
         composable(Routes.Home.route) {
+
+            //Lay down the Home Composable and pass the navController
             Home(navController = navController)
         }
+
+        //Another Route : Profile
         composable(Routes.Profile.route) {
+            //Profile Screen
             Profile()
         }
-        composable(Routes.Setting.route + "/{no}") { navBackStack ->
-            val number = navBackStack.arguments?.getString("no")
-            Setting(number = number)
+
+        //Settings Route, Notice the "/{id}" in last, its the argument passed down from homeScreen
+        composable(Routes.Settings.route + "/{id}") { navBackStack ->
+
+            //Extracting the argument
+            val counter = navBackStack.arguments?.getString("id")
+
+            //Setting screen, Pass the extracted Counter
+            Setting(counter = counter)
+
         }
     }
 }

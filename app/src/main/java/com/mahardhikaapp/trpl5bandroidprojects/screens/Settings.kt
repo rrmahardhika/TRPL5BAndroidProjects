@@ -1,6 +1,5 @@
 package com.mahardhikaapp.trpl5bandroidprojects.screens
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,22 +13,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 
-//Composable function which contains basic Composable functions
+//Settings Composable which receives counter as parameter passed down as arguments from home screen
 @Composable
-fun Profile() {
+fun Setting(counter: String?) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White), contentAlignment = Alignment.Center
     ) {
-
         Column {
+
+            Text(text = "Navigation with arguments", Modifier.padding(10.dp), color = Color.Black)
+
+            //Display the counter
             Text(
-                text = "Navigation without arguments",
+                text = "Settings Screen, passed data is $counter",
                 Modifier.padding(10.dp),
                 color = Color.Black
             )
-            Text(text = "Profile Screen", Modifier.padding(10.dp), color = Color.Black)
 
         }
     }

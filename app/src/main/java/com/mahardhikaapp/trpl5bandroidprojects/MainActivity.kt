@@ -56,7 +56,7 @@ fun ScreenMain() {
             val counter = navBackStack.arguments?.getString("id")
 
             //Setting screen, Pass the extracted Counter
-            Setting(counter = counter)
+            Setting(number = counter)
 
         }
     }

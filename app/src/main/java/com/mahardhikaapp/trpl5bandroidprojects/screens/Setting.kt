@@ -22,7 +22,7 @@ fun Setting(number : String?){
             .background(Color.White)
     ) {
         Column (modifier = Modifier.align(Alignment.Center)) {
-            Text(text = "This is settings screens, the number is $number", color = Color.Black)
+            Text(text = "This is settings screensss, the number is $number", color = Color.Black)
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.mahardhikaapp.trpl5bandroidprojects
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Log.*
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Surface(color = MaterialTheme.colorScheme.background) {
                 ScreenMain()
+                Log.d("INFO LOG", "Ini adalah log");
             }
         }
     }

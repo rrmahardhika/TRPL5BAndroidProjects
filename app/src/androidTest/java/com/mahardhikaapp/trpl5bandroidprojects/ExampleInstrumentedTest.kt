@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.mahardhikaapp.trpl5bandroidprojects.screens.Setting
 
 import org.junit.Assert.*
 
@@ -20,5 +21,22 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.mahardhikaapp.trpl5bandroidprojects", appContext.packageName)
+    }
+
+    @Test
+    fun useAppContext2() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals(   "com.mahardhikaapp.trpl5bandroidprojects", appContext.packageName)
+    }
+
+    @Test
+    fun passTest() {
+        val result = RegistrationExample.validateRegistrationInput(
+            "clint",
+            "123",
+            "123"
+        )
+        assertEquals(true, result)
     }
 }
